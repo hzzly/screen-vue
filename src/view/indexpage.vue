@@ -3,7 +3,12 @@
     <div class="herderWrap">
       <v-header :title="title" :indexes="indexes"></v-header>
     </div>
-    <div class="mapWrap"></div>
+    <div class="mapWrap">
+      <div class="text">未来云栖 - 3D图</div>
+      <div class="environmentWrap">
+        <v-environment></v-environment>
+      </div>
+    </div>
     <div class="bulletinWrap"></div>
     <div class="propertyWrap"></div>
     <div class="resourceWrap"></div>
@@ -13,10 +18,12 @@
 <script>
 
 import VHeader from '@/components/Header'
+import VEnvironment from '@/components/EnvironmentAround'
 
 export default {
   components: {
-    VHeader
+    VHeader,
+    VEnvironment
   },
   data () {
     return {
@@ -48,7 +55,27 @@ export default {
   .mapWrap {
     grid-area: 2/1/span 7/span 2;
     background: #0d0f40;
-    // min-height: 100%;
+    position: relative;
+    background: url(../assets/bg.jpg) center center no-repeat;
+    background-size: cover;
+    .text {
+      position: absolute;
+      color: #37d1ff;
+      font-size: 16px;
+      padding: 1rem;
+      z-index: 1001;
+    }
+    .environmentWrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 200px;
+      background: rgba(13, 23, 62, .8);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
   }
   .bulletinWrap {
     grid-area: 2/3/span 3/span 1;
