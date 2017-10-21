@@ -9,7 +9,7 @@
     <div slot="content" class="contentWrap">
       <div class="message" v-for="(item, index) in messagesValues" :key="index" :style="{backgroundColor: index % 2 === 0 ? '#181c49' : ''}">
         <span :style="{backgroundColor: item.color}"></span>
-        <span :style="{color: item.color}">{{item.text}}</span>
+        <div :style="{color: item.color}">{{item.text}}</div>
       </div>
     </div>
   </v-card>
@@ -99,7 +99,6 @@ export default {
 
 <style lang="scss" scoped>
 span {
-  display: inline-block;
   font-size: 10px;
   color: #d7daed;
   &:first-child {
@@ -110,8 +109,11 @@ span {
   }
 }
 .lengend {
-  display: inline-block;
+  float: right;
   margin-right: .95rem;
+  span {
+    display: inline-block;
+  }
 }
 .contentWrap {
   width: 100%;
@@ -126,10 +128,13 @@ span {
     display: flex;
     align-items: center;
     overflow: hidden;
-    span {
-      &:last-child {
-        
-      }
+    font-size: 10px;
+    div {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 300px;
     }
   }
 }

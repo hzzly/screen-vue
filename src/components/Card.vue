@@ -2,7 +2,7 @@
   <div class="card">
     <div class="head">
       <div class="title">{{title}}</div>
-      <slot name="legends"></slot>
+      <slot name="legends" class="legends"></slot>
     </div>
     <div class="content">
       <slot name="content"></slot>
@@ -31,9 +31,12 @@ export default {
   padding: 1rem .5rem;
   overflow: hidden;
   .head {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     font-size: 18px;
+    .title {
+      float: left;
+    }
   }
   .content {
     flex: 1;

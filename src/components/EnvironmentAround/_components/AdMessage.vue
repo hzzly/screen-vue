@@ -42,6 +42,11 @@ export default {
         &:first-child {
           margin-bottom: .5rem;
         }
+        &:last-child {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
   }

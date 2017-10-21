@@ -62,6 +62,7 @@ export default {
     position: relative;
     background: url(../assets/bg.jpg) center center no-repeat;
     background-size: cover;
+    min-width: 500px;
     .text {
       position: absolute;
       color: #37d1ff;
