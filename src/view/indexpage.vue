@@ -9,7 +9,9 @@
         <v-environment></v-environment>
       </div>
     </div>
-    <div class="bulletinWrap"></div>
+    <div class="bulletinWrap">
+      <v-bulletin></v-bulletin>
+    </div>
     <div class="propertyWrap"></div>
     <div class="resourceWrap"></div>
   </div>
@@ -19,11 +21,13 @@
 
 import VHeader from '@/components/Header'
 import VEnvironment from '@/components/EnvironmentAround'
+import VBulletin from '@/components/Bulletin'
 
 export default {
   components: {
     VHeader,
-    VEnvironment
+    VEnvironment,
+    VBulletin
   },
   data () {
     return {
