@@ -12,8 +12,12 @@
     <div class="bulletinWrap">
       <v-bulletin></v-bulletin>
     </div>
-    <div class="propertyWrap"></div>
-    <div class="resourceWrap"></div>
+    <div class="propertyWrap">
+      <v-property></v-property>
+    </div>
+    <div class="resourceWrap">
+      <v-resource></v-resource>
+    </div>
   </div>
 </template>
 
@@ -22,12 +26,16 @@
 import VHeader from '@/components/Header'
 import VEnvironment from '@/components/EnvironmentAround'
 import VBulletin from '@/components/Bulletin'
+import VProperty from '@/components/Property'
+import VResource from '@/components/Resource'
 
 export default {
   components: {
     VHeader,
     VEnvironment,
-    VBulletin
+    VBulletin,
+    VProperty,
+    VResource
   },
   data () {
     return {
