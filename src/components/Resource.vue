@@ -1,12 +1,15 @@
 <template>
   <v-card :title="title">
-
+    <div slot="content" class="contentWrap">
+      <v-pie :options="options"></v-pie>
+    </div>
   </v-card>
 </template>
 
 <script>
 
 import VCard from '@/components/Card'
+import VPie from '@/components/Pie'
 
 const TRAFFIC = [360, 321, 322, 317, 295, 268, 211, 154, 127, 99, 101, 109, 138, 127, 100, 114, 120, 178, 177, 214, 241, 252, 262, 286]
 
@@ -15,12 +18,13 @@ const TOTAL = 400
 export default {
   name: 'Resource',
   components: {
-    VCard
+    VCard,
+    VPie
   },
   data () {
     return {
       title: '社区信息',
-      current: 'safe',
+      current: 'house',
 
       data: {
         safe: {
@@ -158,7 +162,22 @@ export default {
   },
   methods: {
 
+  },
+  computed: {
+    options () {
+      return this.data[this.current]
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.contentWrap {
+  width: 100%;
+  height: 100%;
+  // padding: .75rem .5rem 0 .5rem;
+  overflow: hidden;
+}
+</style>
+
 
