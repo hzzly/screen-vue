@@ -27,7 +27,7 @@ import VHeader from '@/components/Header'
 import VEnvironment from '@/components/EnvironmentAround'
 import VBulletin from '@/components/Bulletin'
 import VProperty from '@/components/Property'
-import VResource from '@/components/Resource'
+import VResource from '@/components/Resource/index'
 
 export default {
   components: {

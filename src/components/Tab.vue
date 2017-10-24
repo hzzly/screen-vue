@@ -5,7 +5,8 @@
       v-for="(item, index) in tabs"
       :key="index"
       :class="{active: current === item.key}"
-      @click="onClick(item)">
+      @click="onClick(item)"
+      :style="{fontSize: `${fontSize}px`}">
       {{item.label}}
     </li>
   </ul>
@@ -21,6 +22,10 @@ export default {
     },
     current: {
       type: String
+    },
+    fontSize: {
+      type: Number,
+      default: 12
     }
   },
   methods: {
@@ -36,11 +41,10 @@ export default {
 <style lang="scss" scoped>
 .tab {
   display: flex;
+  align-items: center;
   .tabItem {
-    font-size: 18px;
     color: #2b5274;
     margin-right: 1rem;
-    margin-bottom: 0.5rem;
     font-weight: 300;
     cursor: pointer;
   }

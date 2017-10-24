@@ -1,15 +1,28 @@
 <template>
   <v-card :title="title">
+    <div slot="legends" class="legends">
+      <v-tab :tabs="tabsValue" :current="current" @onClick="onClick"></v-tab>
+    </div>
     <div slot="content" class="contentWrap">
-      <v-pie :options="options"></v-pie>
+      <component v-bind:is="currentView" :componentDate="componentDate"></component>
     </div>
   </v-card>
 </template>
 
 <script>
 
+import VTab from '@/components/Tab'
 import VCard from '@/components/Card'
-import VPie from '@/components/Pie'
+
+import HouseCard from './HouseCard'
+import TrafficCard from './TrafficCard'
+
+const COMPONENTS = {
+  house: HouseCard,
+  // people: PeopleCard,
+  traffic: TrafficCard
+  // safe: SafeCard,
+}
 
 const TRAFFIC = [360, 321, 322, 317, 295, 268, 211, 154, 127, 99, 101, 109, 138, 127, 100, 114, 120, 178, 177, 214, 241, 252, 262, 286]
 
@@ -18,15 +31,15 @@ const TOTAL = 400
 export default {
   name: 'Resource',
   components: {
-    VCard,
-    VPie
+    VTab,
+    VCard
   },
   data () {
     return {
       title: '社区信息',
       current: 'house',
 
-      data: {
+      dataValues: {
         safe: {
           key: 'safe',
           label: '安全',
@@ -151,27 +164,46 @@ export default {
           }],
           data: [{
             name: '已占用',
-            data: TRAFFIC.slice(0, new Date().getHours() + 1)
+            // data: TRAFFIC.slice(0, new Date().getHours() + 1)
+            data: TRAFFIC.slice(0, 24)
           }, {
             name: '可使用',
-            data: TRAFFIC.slice(0, new Date().getHours() + 1).map(e => TOTAL - e)
+            // data: TRAFFIC.slice(0, new Date().getHours() + 1).map(e => TOTAL - e)
+            data: TRAFFIC.slice(0, 24).map(e => TOTAL - e)
           }]
         }
       }
     }
   },
   methods: {
-
+    onClick (e) {
+      this.current = e.key
+    }
   },
   computed: {
     options () {
-      return this.data[this.current]
+      return this.dataValues[this.current]
+    },
+    tabsValue () {
+      const tabsValue = Object.values(this.dataValues)
+      return tabsValue
+    },
+    currentView () {
+      return COMPONENTS[this.current]
+    },
+    componentDate () {
+      return this.dataValues[this.current]
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.legends {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .contentWrap {
   width: 100%;
   height: 100%;

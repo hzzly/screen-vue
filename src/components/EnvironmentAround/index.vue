@@ -1,6 +1,6 @@
 <template>
   <div class="environment">
-    <v-tab :tabs="tabsValue" :current="current" @onClick="onClick"></v-tab>
+    <v-tab :tabs="tabsValue" :current="current" @onClick="onClick" :fontSize="18"></v-tab>
     <div class="component">
       <component v-bind:is="currentView" :componentDate="componentDate"></component>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
 
-import VTab from './Tab'
+import VTab from '../Tab'
 
 import Bus from './Bus'
 import Rail from './Rail'
@@ -382,6 +382,7 @@ export default {
   flex-direction: column;
   .component {
     flex: 1;
+    margin-top: 0.5rem;
   }
 }
 </style>
